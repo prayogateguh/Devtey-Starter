@@ -10,28 +10,34 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<div class="l-body">
+		<?php get_template_part( 'template-parts/iklan', 'singlemobileatas' ); ?>
+		<?php get_template_part( 'template-parts/iklan', 'singleatas' ); ?>
+		<div class="l-layout l-layout_tight">
+			<div class="content content_wp gui-row">
+				<?php get_sidebar('kiri'); ?>
+				<div class="content-main">
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						get_template_part( 'template-parts/content', 'single' );
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', get_post_type() );
-
-			the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
+					endwhile; // End of the loop.
+					?>
+				</div>
+				<?php get_sidebar('single'); ?>
+				<!-- #main -->
+			</div>
+		</div>
+		<div class="l-tight gui-hidden-mobile">
+			<div class="banner banner_bottom">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/ads-atas.png">
+			</div>
+			<div class="l-mb-layout gui-hidden-mobile">
+				<?php get_template_part( 'template-parts/bag', 'tags' ); ?>
+			</div>
+		</div>
+		<?php get_template_part( 'template-parts/iklan', 'singlemobileatas' ); ?>
+	</div>
+	<?php
 get_footer();
