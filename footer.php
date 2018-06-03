@@ -11,26 +11,38 @@
 
 ?>
 
-	</div><!-- #content -->
+	</div>
+	<!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'devtey-starter' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'devtey-starter' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'devtey-starter' ), 'devtey-starter', '<a href="https://devtey.com/">Devtey</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+	<footer class="l-footer">
+		<div class="l-layout">
+			<div class="footer">
+				<div class="footer__section footer__section_copyright">
+					<div class="copyright">© 2013–2018, WallpapersCraft</div>
+				</div>
+				<div class="footer__section footer__section_description">
+					<div class="footer-description">
+						Desktop Wallpapers, HD Backgrounds
+					</div>
+				</div>
+				<div class="footer__section footer__section_developer">
+					<div class="developer">
+						Develop by&nbsp;
+						<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'devtey-starter' ) ); ?>" target="_blank">
+							<?php
+            				printf( esc_html__( '%s', 'Devtey Starter' ), 'Devtey' );
+          					?>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	</div>
+	<!-- #page -->
 
-<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 
-</body>
-</html>
+	</body>
+
+	</html>

@@ -105,8 +105,17 @@ add_action( 'after_setup_theme', 'devtey_starter_content_width', 0 );
  */
 function devtey_starter_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'devtey-starter' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Sidebar Kiri', 'devtey-starter' ),
+		'id'            => 'sidebar-kiri',
+		'description'   => esc_html__( 'Add widgets here.', 'devtey-starter' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar Kanan', 'devtey-starter' ),
+		'id'            => 'sidebar-kanan',
 		'description'   => esc_html__( 'Add widgets here.', 'devtey-starter' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',

@@ -12,48 +12,36 @@
  * @package Devtey_Starter
  */
 
-get_header();
-?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
+get_header(); ?>
+	<?php get_template_part( 'template-parts/iklan', 'atas' ); ?>
+	<div class="l-layout l-layout_wide">
+		<div class="content gui-row">
+			<?php get_sidebar('kiri'); ?>
+			<div class="content-main">
+				<?php get_template_part( 'template-parts/bag', 'title' ); ?>
+				<div class="wallpapers wallpapers_zoom wallpapers_main">
+					<ul class="wallpapers__list">
+						<?php
+						if ( have_posts() ) :
+							while ( have_posts() ) :
+								the_post();
+								get_template_part( 'template-parts/content', 'index' );
+							endwhile;
+						else :
+							get_template_part( 'template-parts/content', 'none' );
+						endif;
+						?>
+					</ul>			
+				</div>
+				<?php get_template_part( 'template-parts/bag', 'nav' ); ?>
+				<?php get_template_part( 'template-parts/iklan', 'bawah' ); ?>
+				<?php get_template_part( 'template-parts/bag', 'footertag' ); ?>
+			</div><!-- #main -->
+			<?php get_sidebar('kanan'); ?>
+		</div>
+		
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+get_sidebar('kanan');
 get_footer();

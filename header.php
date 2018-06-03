@@ -21,38 +21,28 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'devtey-starter' ); ?></a>
+<div class="l-wrapper">
+	<header class="l-header">
+		<div class="l-layout">
+			<div class="header JS-MobileSearch JS-MobileSearch-ready">
+				<div class="header__item header__menu gui-visible-mobile">
+					<span class="header__menu-button gui-icon gui-icon_menu JS-Menu-Button"></span>
+				</div>
+				<div class="header__item header__logo">
+					<a href="/"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="WallpapersCraft"></a>
+				</div>
+				<div class="header__item header__search">
+					<form class="search JS-SearchForm" action="/search/">
+						<span class="search__toggler gui-visible-mobile JS-MobileSearch-Toggler"></span>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$devtey_starter_description = get_bloginfo( 'description', 'display' );
-			if ( $devtey_starter_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $devtey_starter_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'devtey-starter' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+						<input class="input search__input JS-SearchForm-Input" name="query" type="text" placeholder="Search">
+						<button class="search__submit" type="submit" title="Search">
+							<span class="gui-icon gui-icon_search"></span>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<div class="l-body">
