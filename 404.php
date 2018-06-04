@@ -1,60 +1,60 @@
-<?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package Devtey_Starter
- */
+<!DOCTYPE html>
+<html>
 
-get_header();
-?>
+<head>
+	<title>Laracasts 404</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.1">
+	<style>
+		html,
+		body {
+			min-height: 100%;
+			height: 100%;
+		}
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		body {
+			background-color: #041835;
+			overflow: hidden;
+		}
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'devtey-starter' ); ?></h1>
-				</header><!-- .page-header -->
+		#btn-join {
+			border-color: #66BDA4;
+			color: #66BDA4
+		}
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'devtey-starter' ); ?></p>
+		#btn-join:hover {
+			border-color: #e3342f;
+		}
+	</style>
+	<link href="<?php echo get_template_directory_uri(); ?>/css/tailwind.min.css" rel="stylesheet">
+</head>
 
-					<?php
-					get_search_form();
+<body class="p-8 md:p-0">
+	<div id="lottie" class="w-full h-full hidden md:block"></div>
+	<div class="md:w-3/4 mx-auto md:pl-8 text-center md:text-left h-full">
+		<div class="md:absolute pin-t h-full flex flex-col justify-center z-10">
+			<h1 class="text-white font-normal tracking-wide text-4xl mb-6">You have ventured into 404 space.</h1>
+			<p class="text-grey-dark mb-8 text-xl leading-normal font-light">
+				We are the Borg. Your biological and technological
+				<br class="hidden md:inline"> distinctiveness will be added to our own. Resistance is futile.
+			</p>
+			<div class="flex flex-col md:flex-row mt-4">
+				<a href="/" class="flex-1 text-center md:mr-8 border-2 border-grey-dark hover:border-red rounded-full p-4 no-underline text-grey-dark uppercase tracking-wide font-semibold mb-4 md:mb-0">Beam Me Home</a>
+				<a id="btn-join" href="/join" class="flex-1 text-center md:mr-8 border-2 rounded-full p-4 no-underline uppercase tracking-wide font-semibold"
+				    style="">Sign Up To Fight</a>
+			</div>
+		</div>
+	</div>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/bodymovin_light.min.js"></script>
+	<script>
+		bodymovin.loadAnimation({
+			container: document.getElementById('lottie'),
+			path: '<?php echo get_template_directory_uri(); ?>/js/404.json',
+			renderer: 'svg',
+			loop: true,
+			autoplay: true
+		});
+	</script>
+</body>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'devtey-starter' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$devtey_starter_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'devtey-starter' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$devtey_starter_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_footer();
+</html>

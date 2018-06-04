@@ -33,7 +33,8 @@ get_header(); ?>
 						?>
 					</ul>			
 				</div>
-				<?php get_template_part( 'template-parts/bag', 'nav' ); ?>
+				<?php dp_nav(); ?>
+				<?php //get_template_part( 'template-parts/bag', 'nav' ); ?>
 				<?php get_template_part( 'template-parts/iklan', 'bawah' ); ?>
 				<?php get_template_part( 'template-parts/bag', 'footertag' ); ?>
 			</div><!-- #main -->

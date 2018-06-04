@@ -167,4 +167,13 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+/**
+ * Load the post navigation function file.
+ */
+require get_template_directory() . '/inc/nav.php';
+
+/**
+ * Create a custom image size
+ */
+add_image_size( 'dp-thumbnail', 300, 168, true ); // dp-thumbnail
 
