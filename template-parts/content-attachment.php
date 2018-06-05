@@ -9,48 +9,59 @@
 
 ?>
 
-<h1 class="gui-h2 gui-heading">Download 3264x2448 graffiti, street art, colorful, wall, urban wallpaper, background</h1>
+<h1 class="gui-h2 gui-heading">Download <?php the_title(); ?></h1>
 
 <div class="wallpaper wallpaper_plain">
     <div class="wallpaper__placeholder">
-        <a class="JS-Popup" href="https://images.wallpaperscraft.com/image/graffiti_street_art_colorful_122060_3264x2448.jpg">
-            <img class="wallpaper__image" src="https://images.wallpaperscraft.com/image/graffiti_street_art_colorful_122060_3264x2448.jpg"
-                alt="3264x2448 Wallpaper graffiti, street art, colorful, wall, urban">
-        </a>
+        <img class="wallpaper__image" src="<?php $attch_id = get_the_ID();echo wp_get_attachment_image_src($attch_id, 'full')[0]; ?>" alt="<?php the_title(); ?>">
     </div>
 
     <div class="wallpaper__tags">
-        <a href="/tag/graffiti">graffiti</a>,
-        <a href="/tag/street%20art">street art</a>,
-        <a href="/tag/colorful">colorful</a>,
-        <a href="/tag/wall">wall</a>,
-        <a href="/tag/urban">urban</a>
+        <?php
+			$posttags = get_the_tags($attch_id+1);
+			if ($posttags) {
+				$x = 0;
+				$len = count($posttags);
+				foreach($posttags as $tag) {
+					if ($x == $len-1) {
+						echo "<a href=\"/tag/{$tag->slug}/\">{$tag->name}</a>";
+					} else {
+						echo "<a href=\"/tag/{$tag->slug}/\">{$tag->name}</a>, ";
+					}
+					
+					$x++;
+				}
+			}
+		?>
     </div>
 
 
     <div class="gui-toolbar gui-toolbar_stretch gui-subheading">
         <div class="gui-toolbar__item gui-hidden-mobile">
-            <a class="gui-button gui-button_full-height" href="https://images.wallpaperscraft.com/image/graffiti_street_art_colorful_122060_3264x2448.jpg"
-                download="">Download wallpaper 3264x2448</a>
+            <?php $img = getimagesize(wp_get_attachment_image_src($attch_id, 'full')[0]); ?>
+            <a class="gui-button gui-button_full-height" href="<?php $attch_id = get_the_ID();echo wp_get_attachment_image_src($attch_id, 'full')[0]; ?>"
+                download="">Download wallpaper <?php echo $img[0]; ?>x<?php echo $img[1]; ?></a>
         </div>
 
         <div class="author">
             <div class="author__block">
 
-                <div class="author__row">Author: Aaron CGXL</div>
+                <div class="author__row">Author: <?php echo ucwords(get_the_author($attch_id+1)); ?></div>
 
 
                 <div class="author__row">
-                    License:
-                    <span>Unsplash License</span>
+                    Category:
+                    <span><?php $cats = get_the_category($attch_id+1); echo $cats[0]->name; ?></span>
                 </div>
             </div>
 
-            <div class="author__block author__block_source">
-                <span class="gui-icon gui-icon_source"></span>
-                <a target="_blank" class="author__link" href="https://unsplash.com/@aaroncgxl">Source</a>
+            <div class="author__block">
+                <div class="author__row">
+                    File Size:
+					<?php echo size_format(filesize( get_attached_file($attch_id, 'full') )); ?>
+                </div>
+                <div class="author__row">Uploaded: <?php echo get_the_date(); ?></div>
             </div>
-
 
         </div>
     </div>

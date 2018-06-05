@@ -2355,7 +2355,7 @@ screen and (max-height: 300px) {
 }
 
 .footer__section_copyright {
-    width: 25%;
+    width: 60%;
 }
 
 @media (max-width: 767px) {
@@ -2364,18 +2364,8 @@ screen and (max-height: 300px) {
     }
 }
 
-.footer__section_description {
-    width: 58.3333%;
-}
-
-@media (max-width: 767px) {
-    .footer__section_description {
-        margin-bottom: 3%;
-    }
-}
-
 .footer__section_developer {
-    width: 16.6667%;
+    width: 40%;
     text-align: right;
 }
 
@@ -2658,6 +2648,10 @@ screen and (max-height: 300px) {
 
 .resolutions__section {
     margin-bottom: 11px;
+}
+.resolutions__section.resolutions__section_torn img {
+    width: 100%;
+    opacity: 0.7;
 }
 
 .resolutions__section:last-child {
@@ -3450,4 +3444,85 @@ screen and (max-height: 300px) {
 
 .wallpapers__load {
     font-size: 1.15em;
+}
+/*--------------------------------------------------------------
+16.1 Galleries
+--------------------------------------------------------------*/
+
+.gallery-item {
+	display: inline-block;
+	text-align: left;
+	vertical-align: top;
+	margin: 0 0 1.5em;
+	/* padding: 0 1em 0 0; */
+	/* width: 50%; */
+}
+
+.gallery-columns-1 .gallery-item {
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-item a,
+.gallery-item a:hover,
+.gallery-item a:focus,
+.widget-area .gallery-item a,
+.widget-area .gallery-item a:hover,
+.widget-area .gallery-item a:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: none;
+	display: inline-block;
+	max-width: 100%;
+}
+
+.gallery-item a img {
+	display: block;
+	-webkit-transition: -webkit-filter 0.2s ease-in;
+	transition: -webkit-filter 0.2s ease-in;
+	transition: filter 0.2s ease-in;
+	transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.gallery-item a:hover img,
+.gallery-item a:focus img {
+	-webkit-filter: opacity(60%);
+	filter: opacity(60%);
+}
+
+.gallery-caption {
+	display: block;
+	text-align: left;
+	padding: 0 10px 0 0;
+	margin-bottom: 0;
+}
+
+.gallery-icon {
+    width: 220px;
+    height: 120px;
+    margin-left: 15px;
+}
+
+.gallery-icon img {
+    width: 220px !important;
+    height: 120px !important;
+}
+.mySlides {
+    display:none;
+}
+.mySlides:hover {
+    opacity: 1 !important;
+}
+.w3-left, .w3-right, .w3-badge {
+    cursor:pointer;
+}
+.w3-badge {
+    height:13px;
+    width:13px;
+    padding:0;
 }

@@ -9,20 +9,31 @@
 
 ?>
 
-	<h1 class="gui-h2 gui-heading">Wallpaper graffiti, street art, colorful, wall, urban</h1>
+	<h1 class="gui-h2 gui-heading"><?php the_title(); ?></h1>
 
 	<div class="wallpaper ">
 		<div class="wallpaper__placeholder">
-			<img class="wallpaper__image" src="https://images.wallpaperscraft.com/image/graffiti_street_art_colorful_122060_1280x720.jpg"
-			    alt="Wallpaper graffiti, street art, colorful, wall, urban">
+			<img class="wallpaper__image" src="<?php $attch_id = get_the_ID()-1;echo wp_get_attachment_image_src($attch_id, 'dp-thumb-single')[0]; ?>"
+			    alt="<?php the_title(); ?>">
 		</div>
 
 		<div class="wallpaper__tags">
-			<a href="/tag/graffiti">graffiti</a>,
-			<a href="/tag/street%20art">street art</a>,
-			<a href="/tag/colorful">colorful</a>,
-			<a href="/tag/wall">wall</a>,
-			<a href="/tag/urban">urban</a>
+			<?php
+			$posttags = get_the_tags();
+			if ($posttags) {
+				$x = 0;
+				$len = count($posttags);
+				foreach($posttags as $tag) {
+					if ($x == $len-1) {
+						echo "<a href=\"/tag/{$tag->slug}/\">{$tag->name}</a>";
+					} else {
+						echo "<a href=\"/tag/{$tag->slug}/\">{$tag->name}</a>, ";
+					}
+					
+					$x++;
+				}
+			}
+			?>
 		</div>
 
 
@@ -34,18 +45,18 @@
 		<div class="author author_margin">
 			<div class="author__block">
 
-				<div class="author__row">Author: Aaron CGXL</div>
+				<div class="author__row">Author: <?php echo ucwords(get_the_author()); ?></div>
 
 
 				<div class="author__row">
-					License:
-					<span>Unsplash License</span>
+					Category:
+					<span><?php $cats = get_the_category(); echo $cats[0]->name; ?></span>
 				</div>
 			</div>
 
 			<div class="author__block author__block_source">
 				<span class="gui-icon gui-icon_source"></span>
-				<a target="_blank" class="author__link" href="https://unsplash.com/@aaroncgxl">Source</a>
+				<a class="author__link" href="<?php echo get_attachment_link($attch_id); ?>">Download</a>
 			</div>
 
 
@@ -72,7 +83,8 @@
 						<div class="wallpaper-table__row">
 							<span class="wallpaper-table__cell">Original Resolution</span>
 							<span class="wallpaper-table__cell">
-								<a href="/download/graffiti_street_art_colorful_122060/3264x2448">3264x2448</a>
+								<?php $img = getimagesize(wp_get_attachment_image_src($attch_id, 'full')[0]); ?>
+								<?php echo $img[0]; ?>x<?php echo $img[1]; ?>
 							</span>
 						</div>
 						<div class="wallpaper-table__row">
@@ -82,7 +94,7 @@
 
 						<div class="wallpaper-table__row">
 							<span class="wallpaper-table__cell">Uploaded</span>
-							<span class="wallpaper-table__cell">2018-06-03 11:26</span>
+							<span class="wallpaper-table__cell"><?php echo get_the_date(); ?></span>
 						</div>
 					</div>
 				</div>
@@ -90,9 +102,31 @@
 		</div>
 
 		<section class="resolutions__section resolutions__section_torn" style="padding:5px;">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit eget augue vel interdum. Suspendisse potenti. Etiam et ante sem. Etiam aliquam, nisl ac pharetra dictum, risus tortor fermentum justo, eget euismod justo ligula eu mi. Curabitur mollis leo eget lacinia accumsan. Cras consequat, turpis ac rhoncus dapibus, mi purus mollis felis, nec imperdiet lacus ex quis velit. Sed at finibus ipsum. Ut sollicitudin ultricies bibendum. Integer commodo fermentum est, ut pellentesque arcu sagittis nec.</p>
-			<p>In tincidunt gravida ante, nec pellentesque dui sodales id. Morbi at orci nibh. Pellentesque semper est iaculis, viverra ante at, pellentesque lacus. Duis est massa, egestas nec porttitor sit amet, dignissim eu nisi. Aenean malesuada urna vel velit ultricies, non dapibus dolor vehicula. Maecenas feugiat sed tortor vel sodales. Sed sed turpis vel dui aliquam consequat. Sed dictum lectus sed sapien congue, non aliquet nisi feugiat. Vivamus in vestibulum nunc, sit amet pretium justo. Nunc pharetra sem nec nulla efficitur tincidunt sit amet eu eros.</p>
-			<p>Etiam vitae tellus nunc. Donec sodales nisi id aliquam posuere. Cras nec facilisis nisi. Nulla vel magna id neque pellentesque imperdiet. Morbi aliquet ex cursus efficitur porttitor. Vestibulum quis velit vel augue porta egestas. Aenean dictum suscipit purus. Etiam ipsum erat, congue sed neque quis, blandit semper felis. Fusce aliquam nisl in nisl interdum, at sodales ante lacinia. Nullam in convallis nisi, mollis suscipit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+			<?php the_content(); ?>
+			<?php
+				$media = get_attached_media('image', get_the_ID()); // Get image attachment(s) to the current Post
+				array_shift($media); // hapus element pertama karena sudah ditampilkan
+			?>
+			<?php if(count($media) > 0) { ?>
+				<h3 style="text-align:center;text-decoration:underline;">Attached Galler<?php echo (count($media) > 1) ? 'ies':'y' ?></h3>
+			<?php } ?>
+			<div class="w3-content w3-display-container" style="max-width:800px">
+				<?php foreach ($media as $med) { ?>
+					<a href="<?php echo $med->post_name; ?>/"><img class="mySlides" src="<?php echo $med->guid; ?>" style="width:100%"></a>
+				<?php } ?>
+				
+				<?php if(count($media) > 1) { ?>
+				<div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+					<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+					<div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+					<?php if (count($media) > 1) { ?>
+						<?php $x=1; foreach ($media as $med) { ?>
+						<span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(<?php echo $x; ?>)"></span>
+						<?php $x++; } ?>
+					<?php } ?>
+				</div>
+				<?php } ?>
+			</div>
 		</section>
 
 	</div>
