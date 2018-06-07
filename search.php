@@ -1,55 +1,53 @@
 <?php
 /**
- * The template for displaying search results pages
+ * The main template file
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Devtey_Starter
  */
 
-get_header();
-?>
-
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'devtey-starter' ), '<span>' . get_search_query() . '</span>' );
-					?>
+get_header(); ?>
+	<?php get_template_part( 'template-parts/iklan', 'atas' ); ?>
+	<div class="l-layout l-layout_wide">
+		<div class="content gui-row">
+			<?php get_sidebar('kiri'); ?>
+			<div class="content-main">
+				<h1 class="gui-heading">
+					<span class="gui-heading__toolbar gui-hidden-mobile">
+						<span class="gui-heading__title">
+							<?php printf( esc_html__( 'Search Results for: %s', 'devtey-starter' ), '<span>' . get_search_query() . '</span>' ); ?>
+						</span>
+					</span>
 				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
+				<div class="wallpapers wallpapers_zoom wallpapers_main">
+					<ul class="wallpapers__list">
+						<?php
+						if ( have_posts() ) :
+							while ( have_posts() ) :
+								the_post();
+								get_template_part( 'template-parts/content', 'index' );
+							endwhile;
+						else :
+							get_template_part( 'template-parts/content', 'none' );
+						endif;
+						?>
+					</ul>			
+				</div>
+				<?php dp_nav(); ?>
+				<?php get_template_part( 'template-parts/iklan', 'bawah' ); ?>
+				<?php get_template_part( 'template-parts/bag', 'footertag' ); ?>
+			</div><!-- #main -->
+			<?php get_sidebar('kanan'); ?>
+		</div>
+		
+	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+get_sidebar('kanan');
 get_footer();

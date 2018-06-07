@@ -24,7 +24,6 @@ get_header();
                     endwhile; // End of the loop.
                     get_template_part( 'template-parts/iklan', 'attachment' );
                     ?>
-                    <h2 class="gui-h1 gui-text-center gui-heading gui-heading_up-shift">Related Wallpapers graffiti, street art</h2>
                     <?php get_template_part( 'template-parts/bag', 'related' ); ?>
                     <?php get_template_part( 'template-parts/bag', 'tags' ); ?>
 				</div>

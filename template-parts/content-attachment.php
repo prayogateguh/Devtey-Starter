@@ -45,17 +45,6 @@
 
         <div class="author">
             <div class="author__block">
-
-                <div class="author__row">Author: <?php echo ucwords(get_the_author($attch_id+1)); ?></div>
-
-
-                <div class="author__row">
-                    Category:
-                    <span><?php $cats = get_the_category($attch_id+1); echo $cats[0]->name; ?></span>
-                </div>
-            </div>
-
-            <div class="author__block">
                 <div class="author__row">
                     File Size:
 					<?php echo size_format(filesize( get_attached_file($attch_id, 'full') )); ?>

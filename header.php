@@ -20,7 +20,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body>
 <div class="l-wrapper">
 	<header class="l-header">
 		<div class="l-layout">
@@ -32,10 +32,10 @@
 					<a href="/"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="WallpapersCraft"></a>
 				</div>
 				<div class="header__item header__search">
-					<form class="search JS-SearchForm" action="/search/">
+					<form class="search JS-SearchForm" action="/?s=">
 						<span class="search__toggler gui-visible-mobile JS-MobileSearch-Toggler"></span>
 
-						<input class="input search__input JS-SearchForm-Input" name="query" type="text" placeholder="Search">
+						<input class="input search__input JS-SearchForm-Input" name="s" type="text" placeholder="Search">
 						<button class="search__submit" type="submit" title="Search">
 							<span class="gui-icon gui-icon_search"></span>
 						</button>

@@ -36,12 +36,6 @@
 			?>
 		</div>
 
-
-
-		<a class="wallpaper__button gui-button gui-button_full gui-visible-mobile" href="/download/graffiti_street_art_colorful_122060/3264x2448">
-			Original Resolution: 3264x2448
-		</a>
-
 		<div class="author author_margin">
 			<div class="author__block">
 

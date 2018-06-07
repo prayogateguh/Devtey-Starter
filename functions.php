@@ -176,4 +176,5 @@ require get_template_directory() . '/inc/nav.php';
  * Create a custom image size
  */
 add_image_size( 'dp-thumb-index', 300, 168, true ); // dp-thumbnail for index
+add_image_size( 'dp-thumb-sidebar', 300, 188, true ); // dp-thumbnail for index
 add_image_size( 'dp-thumb-single', 1280, 720, true ); // dp-thumbnail

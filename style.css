@@ -1148,7 +1148,7 @@ body {
 .l-layout {
     box-sizing: border-box;
     max-width: 960px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     padding: 0 10px;
 }
 
@@ -3525,4 +3525,7 @@ screen and (max-height: 300px) {
     height:13px;
     width:13px;
     padding:0;
+}
+.dp-item {
+    
 }
