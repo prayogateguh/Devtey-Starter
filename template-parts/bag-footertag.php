@@ -3,7 +3,7 @@
     <div class="gui-toggler__content JS-Toggler-Content gui-visible-mobile">
       <div class="tags">
         <?php 
-        $tags = get_tags(); 
+        $tags = get_tags(array('number' => 50, 'orderby' => 'count', 'order' => 'DESC')); 
 
         foreach ($tags as $tag) { ?>
           <a style="font-size:130%;" href="<?php echo get_bloginfo('url'); ?>/tag/<?php echo $tag->slug; ?>/"><?php echo $tag->name; ?></a>

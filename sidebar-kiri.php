@@ -15,7 +15,7 @@
 
       <a class="filters__heading" href="/">All</a>
       <?php 
-      $cats = get_categories(); 
+      $cats = get_categories(array('number' => 20)); 
 
       foreach ($cats as $cat) { ?>
       <ul class="filters__list JS-Filters">        
