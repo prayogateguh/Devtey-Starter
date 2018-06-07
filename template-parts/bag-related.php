@@ -27,14 +27,10 @@ $attachments = get_posts( array(
                         <span class="wallpapers__info-rating">
                             <?php $cats = get_the_category(wp_get_post_parent_id( $post->ID )); echo $cats[0]->name; ?>
                         </span>
-                        <?php 
-                            $img = getimagesize(wp_get_attachment_image_src($attch_id, 'full')[0]);
-                            echo "$img[0]x$img[1]"; 
-                        ?>
                         <span class="wallpapers__info-downloads">
                             <?php echo ucwords(get_the_author()); ?>
                         </span>
-                    <span class="wallpapers__info"><?php the_title(); ?></span>
+                    </span>
                 </a>
             </li>
         <?php
