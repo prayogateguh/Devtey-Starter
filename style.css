@@ -1125,7 +1125,7 @@ body {
 @media (max-width: 767px) {
     .l-body {
         padding-top: 0;
-        padding-bottom: 43%;
+        /* padding-bottom: 43%; */
     }
 }
 
@@ -2493,9 +2493,9 @@ screen and (max-height: 300px) {
     line-height: 24px;
 }
 
-.menu {
+/* .menu {
     display: none;
-}
+} */
 
 .menu_static {
     display: block;
@@ -3526,6 +3526,15 @@ screen and (max-height: 300px) {
     width:13px;
     padding:0;
 }
-.dp-item {
-    
+/* link nav */
+
+.atas a {
+    color: #c7bba7;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+}
+.atas a:hover {
+    background-color: #c7bba7;
+    color: #161615;
 }

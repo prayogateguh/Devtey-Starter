@@ -99,33 +99,6 @@ function devtey_starter_content_width() {
 add_action( 'after_setup_theme', 'devtey_starter_content_width', 0 );
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function devtey_starter_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar Kiri', 'devtey-starter' ),
-		'id'            => 'sidebar-kiri',
-		'description'   => esc_html__( 'Add widgets here.', 'devtey-starter' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar Kanan', 'devtey-starter' ),
-		'id'            => 'sidebar-kanan',
-		'description'   => esc_html__( 'Add widgets here.', 'devtey-starter' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'devtey_starter_widgets_init' );
-
-/**
  * Enqueue scripts and styles.
  */
 function devtey_starter_scripts() {
@@ -178,3 +151,18 @@ require get_template_directory() . '/inc/nav.php';
 add_image_size( 'dp-thumb-index', 300, 168, true ); // dp-thumbnail for index
 add_image_size( 'dp-thumb-sidebar', 300, 188, true ); // dp-thumbnail for index
 add_image_size( 'dp-thumb-single', 1280, 720, true ); // dp-thumbnail
+
+
+/**
+ * Remove the additional CSS section, introduced in 4.7, from the Customizer.
+ * @param $wp_customize WP_Customize_Manager
+ */
+function prefix_remove_css_section( $wp_customize ) {
+	$wp_customize->remove_section( 'custom_css' );
+	$wp_customize->remove_section( 'colors' );
+	$wp_customize->remove_section( 'header_image' );
+	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'nav' );
+	$wp_customize->remove_section( 'static_front_page' );
+}
+add_action( 'customize_register', 'prefix_remove_css_section', 15 );

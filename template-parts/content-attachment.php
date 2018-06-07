@@ -35,7 +35,6 @@
 		?>
     </div>
 
-    <?php the_content(); ?>
     <div class="gui-toolbar gui-toolbar_stretch gui-subheading">
         <div class="gui-toolbar__item gui-hidden-mobile">
             <?php $img = getimagesize(wp_get_attachment_image_src($attch_id, 'full')[0]); ?>
