@@ -1,4 +1,4 @@
-<div class="tags">
+<div class="tags" style="margin-bottom:40px;">
     <?php 
     $tags = get_tags(); 
 

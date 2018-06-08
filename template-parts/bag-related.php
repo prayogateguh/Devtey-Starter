@@ -18,13 +18,12 @@ $attachments = get_posts( array(
     'post_type' => 'attachment'
 ) );
 }
-
 $attchs = array();
 $x = 1;
 foreach ($attachments as $attch) {
     $ortu = $attch->post_parent;
     $ortu_status = get_post_status( $ortu );
-    if ($ortu_status == 'publish') {
+    if ($ortu_status == 'publish' && $ortu != 0) {
         array_push($attchs, $attch);
     }
     

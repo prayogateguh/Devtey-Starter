@@ -1,3 +1,6 @@
 <div class="banner banner_bottom gui-hidden-mobile">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/ads-bawah.png">
+    <?php echo get_option('dp-ads-bawah'); ?>
+</div>
+<div class="banner gui-visible-mobile" style="margin-bottom:40px;">
+    <?php echo get_option('dp-ads-bawah-mobile'); ?>
 </div>

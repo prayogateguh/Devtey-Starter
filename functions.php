@@ -144,6 +144,10 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Load the post navigation function file.
  */
 require get_template_directory() . '/inc/nav.php';
+/**
+ * Load the theme options function file.
+ */
+require get_template_directory() . '/inc/theme-options.php';
 
 /**
  * Create a custom image size
@@ -166,3 +170,12 @@ function prefix_remove_css_section( $wp_customize ) {
 	$wp_customize->remove_section( 'static_front_page' );
 }
 add_action( 'customize_register', 'prefix_remove_css_section', 15 );
+
+/**
+ * Load the wp libraries for handle media uploading
+ */
+function load_wp_media_files() {
+	wp_enqueue_media();
+	wp_enqueue_script( 'wp-media-uploader', get_template_directory_uri() . '/js/dp-uploader.js', array( 'jquery' ), 1.0 );
+}
+add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );
