@@ -43,9 +43,7 @@
 				?>
 				</div>
 				<div class="header__item header__search">
-					<form class="search JS-SearchForm" action="/?s=">
-						<span class="search__toggler gui-hidden-mobile JS-MobileSearch-Toggler"></span>
-
+					<form class="search JS-SearchForm" action="<?php echo get_bloginfo('url'); ?>/?s=">
 						<input class="input search__input JS-SearchForm-Input" name="s" type="text" placeholder="Search">
 						<button class="search__submit gui-hidden-mobile" type="submit" title="Search">
 							<span class="gui-icon gui-icon_search"></span>
