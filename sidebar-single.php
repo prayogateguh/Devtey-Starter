@@ -28,7 +28,13 @@ $wpex_query = new wp_query( $args );
         <?php
         // Loop through posts
         foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); ?>
-            <?php $attch_id = get_the_ID()-1; ?>
+            <?php 
+                $all_image = get_children( array(
+					'post_type' => 'attachment',
+					'post_parent' => get_the_ID(),
+				) );
+                $attch_id = array_pop($all_image)->ID; 
+            ?>
             <li class="wallpapers__item" style="width: 300px">
                 <a class="wallpapers__link" href="<?php the_permalink(); ?>">
                     <span class="wallpapers__canvas">

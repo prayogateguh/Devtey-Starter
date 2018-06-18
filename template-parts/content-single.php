@@ -13,7 +13,16 @@
 
 	<div class="wallpaper ">
 		<div class="wallpaper__placeholder">
-			<img class="wallpaper__image" src="<?php $attch_id = get_the_ID()-1;echo wp_get_attachment_image_src($attch_id, 'dp-thumb-single')[0]; ?>"
+			<img class="wallpaper__image" src="
+			<?php 
+			$all_image = get_children( array(
+				'post_type' => 'attachment',
+				'post_parent' => get_the_ID(),
+			) );
+			$attch_id = array_pop($all_image)->ID;
+			echo wp_get_attachment_image_src($attch_id, 'dp-thumb-single')[0]; 
+			?>
+			"
 			    alt="<?php the_title(); ?>">
 		</div>
 
@@ -24,10 +33,11 @@
 				$x = 0;
 				$len = count($posttags);
 				foreach($posttags as $tag) {
+					$burl = get_bloginfo('url');
 					if ($x == $len-1) {
-						echo "<a href=\"/tag/{$tag->slug}/\">{$tag->name}</a>";
+						echo "<a href=\"{$burl}/tag/{$tag->slug}/\">{$tag->name}</a>";
 					} else {
-						echo "<a href=\"/tag/{$tag->slug}/\">{$tag->name}</a>, ";
+						echo "<a href=\"{$burl}/tag/{$tag->slug}/\">{$tag->name}</a>, ";
 					}
 					
 					$x++;
@@ -57,7 +67,11 @@
 		</div>
 
 		<section class="resolutions__section resolutions__section_torn" style="padding:15px;">
-			<?php the_content(); ?>
+			<?php
+			(substr( get_the_content(), 0, 4 ) === "<img") ? $manual = true : $manual = false;
+			echo ($manual) ? "" : get_the_content();
+			?>
+			<?php //the_content(); ?>
 			<?php
 				$media = get_attached_media('image', get_the_ID()); // Get image attachment(s) to the current Post
 				array_shift($media); // hapus element pertama karena sudah ditampilkan
