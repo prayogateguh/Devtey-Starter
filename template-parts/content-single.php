@@ -68,34 +68,24 @@
 
 		<section class="resolutions__section resolutions__section_torn" style="padding:15px;">
 			<?php
+			function get_string_between($string, $start, $end){
+				$string = ' ' . $string;
+				$ini = strpos($string, $start);
+				if ($ini == 0) return '';
+				$ini += strlen($start);
+				$len = strpos($string, $end, $ini) - $ini;
+				return substr($string, $ini, $len);
+			}
+			$_buang_gambar = "<img" . get_string_between(get_the_content(), '<img', '>') . ">";
+			$_no_gambar = str_replace($_buang_gambar,"",get_the_content());
 			(substr( get_the_content(), 0, 4 ) === "<img") ? $manual = true : $manual = false;
-			echo ($manual) ? "" : get_the_content();
+			echo ($manual) ? apply_filters('the_content',$_no_gambar) : get_the_content();
 			?>
 			<?php //the_content(); ?>
 			<?php
 				$media = get_attached_media('image', get_the_ID()); // Get image attachment(s) to the current Post
 				array_shift($media); // hapus element pertama karena sudah ditampilkan
 			?>
-			<?php if(count($media) > 0) { ?>
-				<h3 style="text-align:center;text-decoration:underline;">Attached Galler<?php echo (count($media) > 1) ? 'ies':'y' ?></h3>
-			<?php } ?>
-			<div class="w3-content w3-display-container" style="max-width:800px">
-				<?php foreach ($media as $med) { ?>
-					<a href="<?php echo $med->post_name; ?>/"><img class="mySlides" src="<?php echo $med->guid; ?>" style="width:100%"></a>
-				<?php } ?>
-				
-				<?php if(count($media) > 1) { ?>
-				<div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-					<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-					<div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-					<?php if (count($media) > 1) { ?>
-						<?php $x=1; foreach ($media as $med) { ?>
-						<span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(<?php echo $x; ?>)"></span>
-						<?php $x++; } ?>
-					<?php } ?>
-				</div>
-				<?php } ?>
-			</div>
 		</section>
 
 	</div>

@@ -2355,7 +2355,8 @@ screen and (max-height: 300px) {
 }
 
 .footer__section_copyright {
-    width: 60%;
+    width: 100%;
+    text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -2450,9 +2451,10 @@ screen and (max-height: 300px) {
 }
 
 .header__logo {
-    width: 33.3333%;
+    width: 15%;
     font-size: 0;
     line-height: 0;
+    padding-bottom: 10px;
 }
 
 @media (max-width: 767px) {
@@ -2464,7 +2466,7 @@ screen and (max-height: 300px) {
 }
 
 .header__search {
-    width: 34.6667%;
+    width: 30%;
     font-size: 0;
     line-height: 0;
 }
@@ -3537,4 +3539,16 @@ screen and (max-height: 300px) {
 .atas a:hover {
     background-color: #c7bba7;
     color: #161615;
+}
+
+/* gallery */
+.gallery {
+	text-align: center !important;
+}
+.gallery-icon, .gallery-icon img {
+    width: 100% !important;
+    height: 50%  !important;
+}
+.gallery-item {
+    width: 100%  !important;
 }

@@ -44,22 +44,22 @@ function dp_starter_settings_page() {
 
         <tr valign="top">
         <th scope="row">Code Iklan Atas</th>
-        <td><textarea name="dp-ads-atas" rows="7" /><?php echo (get_option('dp-ads-atas') != '') ? esc_attr( get_option('dp-ads-atas') ) : "<img src='". get_template_directory_uri() ."/img/ads-atas.png'>"; ?></textarea></td>
+        <td><textarea name="dp-ads-atas" rows="7" /><?php echo esc_attr( get_option('dp-ads-atas') ); ?></textarea></td>
         </tr>
         
         <tr valign="top">
         <th scope="row">Code Iklan Bawah</th>
-        <td><textarea name="dp-ads-bawah" rows="7" /><?php echo (get_option('dp-ads-bawah') != '') ? esc_attr( get_option('dp-ads-bawah') ) : "<img src='". get_template_directory_uri() ."/img/ads-bawah.png'>"; ?></textarea></td>
+        <td><textarea name="dp-ads-bawah" rows="7" /><?php echo esc_attr( get_option('dp-ads-bawah') ); ?></textarea></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Code Iklan Mobile/HP Atas</th>
-        <td><textarea name="dp-ads-atas-mobile" rows="7" /><?php echo (get_option('dp-ads-atas-mobile') != '') ? esc_attr( get_option('dp-ads-atas-mobile') ) : "<img src='". get_template_directory_uri() ."/img/ads-mobile-2.png'>"; ?></textarea></td>
+        <td><textarea name="dp-ads-atas-mobile" rows="7" /><?php echo esc_attr( get_option('dp-ads-atas-mobile') ); ?></textarea></td>
         </tr>
 
         <tr valign="top">
         <th scope="row">Code Iklan Mobile/HP Bawah</th>
-        <td><textarea name="dp-ads-bawah-mobile" rows="7" /><?php echo (get_option('dp-ads-bawah-mobile') != '') ? esc_attr( get_option('dp-ads-bawah-mobile') ) : "<img src='". get_template_directory_uri() ."/img/ads-mobile-1.png'>"; ?></textarea></td>
+        <td><textarea name="dp-ads-bawah-mobile" rows="7" /><?php echo esc_attr( get_option('dp-ads-bawah-mobile') ); ?></textarea></td>
         </tr>
     </table>
     
