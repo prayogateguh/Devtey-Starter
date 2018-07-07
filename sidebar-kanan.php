@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="content-sidebar content-sidebar_shift JS-Fix JS-Fix-ready">
+<div class="content-sidebar content-sidebar_shift JS-Fix JS-Fix-ready gui-hidden-mobile">
   <div class="JS-Fix-Target" style="position: static; top: auto; right: auto; bottom: 0px; left: auto; width: auto; z-index: auto;">
     <div class="filters">
 

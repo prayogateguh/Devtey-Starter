@@ -2349,7 +2349,7 @@ screen and (max-height: 300px) {
 }
 
 .footer__section {
-    float: left;
+    float: center;
     box-sizing: border-box;
     padding: 0 10px;
 }
@@ -2374,7 +2374,7 @@ screen and (max-height: 300px) {
     .footer__section {
         float: none;
         width: 100%;
-        text-align: left;
+        text-align: center;
     }
 }
 
