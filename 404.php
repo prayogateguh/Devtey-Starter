@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Laracasts 404</title>
+	<title><?php echo get_bloginfo('name'); ?> 404</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="initial-scale=1.1">
 	<style>
@@ -39,9 +39,7 @@
 				<br class="hidden md:inline"> distinctiveness will be added to our own. Resistance is futile.
 			</p>
 			<div class="flex flex-col md:flex-row mt-4">
-				<a href="/" class="flex-1 text-center md:mr-8 border-2 border-grey-dark hover:border-red rounded-full p-4 no-underline text-grey-dark uppercase tracking-wide font-semibold mb-4 md:mb-0">Beam Me Home</a>
-				<a id="btn-join" href="/join" class="flex-1 text-center md:mr-8 border-2 rounded-full p-4 no-underline uppercase tracking-wide font-semibold"
-				    style="">Sign Up To Fight</a>
+				<a href="<?php echo get_bloginfo('url'); ?>" class="flex-1 text-center md:mr-8 border-2 border-grey-dark hover:border-red rounded-full p-4 no-underline text-grey-dark uppercase tracking-wide font-semibold mb-4 md:mb-0">Beam Me Home</a>
 			</div>
 		</div>
 	</div>
