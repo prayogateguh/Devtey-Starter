@@ -39,6 +39,16 @@ get_header();
 		var slideIndex = 1;
 		showDivs(slideIndex);
 
+		var kiri = document.querySelector("#w3-display-left");
+		var kanan = document.querySelector("#w3-display-right");
+
+		kiri.addEventListener("click", function onclick(event) {
+			plusDivs(-1);
+		});
+		kanan.addEventListener("click", function onclick(event) {
+			plusDivs(1);
+		});
+
 		function plusDivs(n) {
 		showDivs(slideIndex += n);
 		}
